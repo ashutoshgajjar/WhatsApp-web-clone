@@ -335,7 +335,7 @@ function List() {
           ))}
         </div>
 
-        <div className='space-y-2 px-3 h-[calc(100vh-9.5rem)] overflow-y-auto'>
+        <div className='space-y-2 px-3 h-[calc(100vh-9.45rem)] overflow-y-auto'>
           {loading && chats.length === 0 ? (
             <div className='flex flex-col items-center justify-center h-32 text-zinc-500 dark:text-zinc-400'>
               <Loader className='size-6 animate-spin mb-2' />

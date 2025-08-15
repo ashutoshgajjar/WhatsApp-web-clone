@@ -75,11 +75,11 @@ function ChatUI() {
     scrollToBottom();
   }, [currentMessages]);
 
-  useEffect(() => {
-    if (activeChat && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [activeChat]);
+  // useEffect(() => {
+  //   if (activeChat && inputRef.current) {
+  //     inputRef.current.focus();
+  //   }
+  // }, [activeChat]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

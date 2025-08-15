@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { io } from 'socket.io-client';
 
 const WEBSOCKET_URL =
-  import.meta.env.REACT_APP_WEBSOCKET_URL || 'http://localhost:3000';
+  import.meta.env.VITE_API_URL;
 
 export const useWebSocket = () => {
   const [isConnected, setIsConnected] = useState(false);
@@ -13,7 +13,7 @@ export const useWebSocket = () => {
   useEffect(() => {
     socketRef.current = io(WEBSOCKET_URL, {
       transports: ['websocket', 'polling'],
-      timeout: 10000,
+      timeout: 60000,
     });
 
     const socket = socketRef.current;

@@ -1,6 +1,6 @@
 import apiClient from './client';
 
-const BUSINESS_PHONE_ID = import.meta.env.REACT_APP_BUSINESS_PHONE_ID;
+const BUSINESS_PHONE_ID = import.meta.env.VITE_BUSINESS_PHONE_ID;
 
 export const chatApi = {
   sendMessage: async (waId, messageContent, messageType = 'text') => {

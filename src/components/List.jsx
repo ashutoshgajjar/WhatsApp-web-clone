@@ -16,6 +16,7 @@ import {
   RefreshCw,
   Trash2,
   PinOff,
+  X,
 } from 'lucide-react';
 import { useRef, useState, useMemo } from 'react';
 import { useChat } from '../context/ChatContext';
@@ -76,7 +77,6 @@ function List() {
   };
 
   const handleChatClick = (chat) => {
-    console.log(`Chat clicked for wa_id: ${chat.waId}`);
     setActiveChat(chat);
 
     if (!chat.isRead) {
@@ -88,7 +88,6 @@ function List() {
   const handleSearch = (searchTerm) => {
     setSearchQuery(searchTerm);
     if (searchTerm.trim()) {
-      console.log(`Searching for: ${searchTerm}`);
       searchChats(searchTerm);
     } else {
       loadChats();
@@ -116,7 +115,6 @@ function List() {
         break;
     }
 
-    console.log(`Filtered ${filtered.length} chats for tab: ${activeTab}`);
     return filtered;
   }, [chats, activeTab]);
 
@@ -184,7 +182,6 @@ function List() {
   };
 
   const handleRefresh = () => {
-    console.log('Refreshing chats...');
     if (searchQuery.trim()) {
       searchChats(searchQuery);
     } else {
@@ -299,7 +296,7 @@ function List() {
 
         <div className='py-2 px-3'>
           <div className='group flex items-center px-2 py-1.5 gap-2.5 rounded-full border border-transparent hover:border-black/15 dark:hover:border-white/15 bg-stone-100 dark:bg-zinc-700'>
-            <Search className='size-4 text-zinc-500 dark:text-zinc-400' />
+            <Search className='size-4.5 text-zinc-500 dark:text-zinc-400' />
             <input
               type='text'
               placeholder='Search or start new chat...'
@@ -307,6 +304,18 @@ function List() {
               onChange={(e) => handleSearch(e.target.value)}
               className='focus:outline-none placeholder:text-zinc-500 dark:placeholder:text-zinc-400 text-sm bg-transparent w-full'
             />
+            {searchQuery && (
+              <button
+                className='cursor-pointer'
+                onClick={() => {
+                  setSearchQuery('');
+                  loadChats();
+                }}
+                title='Clear search results'
+              >
+                <X className='size-4' />
+              </button>
+            )}
           </div>
         </div>
 
@@ -318,7 +327,7 @@ function List() {
               className={`text-sm px-2.5 py-1 rounded-full border ${
                 activeTab === tab
                   ? 'bg-green-200 dark:bg-green-900/69 text-green-700 dark:text-green-300 border-green-600'
-                  : 'text-zinc-500 dark:text-zinc-300 hover:text-zinc-600 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700 border-black/15 hover:border-black/25 dark:border-zinc-700 dark:hover:border-zinc-600'
+                  : 'text-zinc-500 dark:text-zinc-300 hover:text-zinc-600 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/75 border-black/15 hover:border-black/25 dark:border-zinc-700 dark:hover:border-zinc-600'
               }`}
             >
               {tab}
@@ -333,14 +342,14 @@ function List() {
               <p>Loading chats...</p>
             </div>
           ) : error ? (
-            <div className='flex flex-col items-center justify-center h-32 text-red-500'>
+            <div className='flex flex-col items-center justify-center h-64 text-red-500'>
               <p>Error loading chats</p>
               <p className='text-sm'>{error}</p>
               <button
                 onClick={handleRefresh}
-                className='mt-2 text-sm text-blue-500 hover:underline'
+                className='mt-2 text-sm p-1 px-2 rounded-full text-black dark:bg-green-500 dark:hover:bg-green-600 '
               >
-                Try again
+                Refresh
               </button>
             </div>
           ) : filteredChats.length > 0 ? (
@@ -473,21 +482,17 @@ function List() {
               );
             })
           ) : (
-            <div className='flex flex-col items-center justify-center h-32 text-zinc-500 dark:text-zinc-400'>
+            <div className='flex flex-col items-center justify-center h-64 text-zinc-500 dark:text-zinc-400'>
               <div className='text-center'>
-                <p className='mb-2'>No {activeTab.toLowerCase()} chats found</p>
+                {/* <p className='mb-2'>No {activeTab.toLowerCase()} chats found</p> */}
                 {searchQuery && (
-                  <div className='space-y-2'>
-                    <p className='text-sm'>No results for "{searchQuery}"</p>
-                    <button
-                      onClick={() => {
-                        setSearchQuery('');
-                        loadChats();
-                      }}
-                      className='text-sm text-blue-500 hover:underline'
-                    >
+                  <div className='space-y-2 px-2'>
+                    <p className='text-sm'>
+                      No results for found "{searchQuery}" in chats, contacts or messages
+                    </p>
+                    {/* <button className='text-sm text-blue-500 hover:underline'>
                       Clear search
-                    </button>
+                    </button> */}
                   </div>
                 )}
                 {!searchQuery && chats.length === 0 && (

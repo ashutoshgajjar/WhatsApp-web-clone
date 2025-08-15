@@ -183,16 +183,9 @@ export const ChatProvider = ({ children }) => {
 
   const loadChats = async (page = 1, waIdFilter = null, searchTerm = null) => {
     try {
-      console.log('Loading chats with filters:', {
-        page,
-        waIdFilter,
-        searchTerm,
-      });
       dispatch({ type: ActionTypes.SET_LOADING, payload: true });
 
       const response = await chatApi.getChats(page, 20, waIdFilter, searchTerm);
-      console.log('Received chat response:', response);
-
       const chats = response.chats || [];
 
       const validChats = chats.filter((chat) => {
@@ -203,15 +196,7 @@ export const ChatProvider = ({ children }) => {
         return isValid;
       });
 
-      console.log(`Loaded ${validChats.length} valid chats`);
-
-      validChats.forEach((chat) => {
-        console.log(
-          `- Chat wa_id: ${chat.waId}, contact: ${
-            chat.contactName || 'No name'
-          }`
-        );
-      });
+      validChats.forEach((chat) => {});
 
       dispatch({ type: ActionTypes.SET_CHATS, payload: validChats });
 
@@ -228,8 +213,6 @@ export const ChatProvider = ({ children }) => {
 
   const loadMessages = async (waId, page = 1) => {
     try {
-      console.log(`Loading messages for wa_id: ${waId}, page: ${page}`);
-
       if (page === 1) {
         dispatch({
           type: ActionTypes.CLEAR_CHAT_MESSAGES,
@@ -240,8 +223,6 @@ export const ChatProvider = ({ children }) => {
       const messages = await chatApi.getMessages(waId, page);
 
       const validMessages = messages.filter((message) => message.waId === waId);
-
-      console.log(`Loaded ${validMessages.length} messages for wa_id: ${waId}`);
 
       dispatch({
         type: ActionTypes.SET_MESSAGES,
@@ -277,8 +258,6 @@ export const ChatProvider = ({ children }) => {
     };
 
     try {
-      console.log(`Sending message to wa_id: ${waId}`, optimisticMessage);
-
       dispatch({ type: ActionTypes.SEND_MESSAGE_START });
 
       dispatch({
@@ -287,8 +266,6 @@ export const ChatProvider = ({ children }) => {
       });
 
       const response = await chatApi.sendMessage(waId, messageContent);
-      console.log('✓ Message sent successfully:', response);
-
       dispatch({
         type: ActionTypes.UPDATE_MESSAGE_STATUS,
         payload: {
@@ -336,7 +313,6 @@ export const ChatProvider = ({ children }) => {
 
   const searchChats = async (searchTerm) => {
     try {
-      console.log(`Searching chats with term: ${searchTerm}`);
       dispatch({ type: ActionTypes.SET_LOADING, payload: true });
 
       const response = await chatApi.searchChats(searchTerm);
@@ -350,12 +326,7 @@ export const ChatProvider = ({ children }) => {
   };
 
   const setActiveChat = (chat) => {
-    console.log(`Switching to chat for wa_id: ${chat?.waId}`);
-
     if (state.activeChat && chat && state.activeChat.waId !== chat.waId) {
-      console.log(
-        `Clearing messages for previous chat: ${state.activeChat.waId}`
-      );
     }
 
     dispatch({ type: ActionTypes.SET_ACTIVE_CHAT_AND_CLEAR, payload: chat });
@@ -367,8 +338,6 @@ export const ChatProvider = ({ children }) => {
 
   const markChatRead = async (waId) => {
     try {
-      console.log(`Marking chat as read for wa_id: ${waId}`);
-
       dispatch({
         type: ActionTypes.UPDATE_CHAT_STATUS,
         payload: {
@@ -381,7 +350,6 @@ export const ChatProvider = ({ children }) => {
       });
 
       await chatApi.markChatRead(waId);
-      console.log(`✓ Successfully marked chat as read for wa_id: ${waId}`);
     } catch (error) {
       console.error(`Failed to mark chat as read for wa_id ${waId}:`, error);
 
@@ -405,8 +373,6 @@ export const ChatProvider = ({ children }) => {
 
   const markChatUnread = async (waId) => {
     try {
-      console.log(`Marking chat as unread for wa_id: ${waId}`);
-
       dispatch({
         type: ActionTypes.UPDATE_CHAT_STATUS,
         payload: {
@@ -419,7 +385,6 @@ export const ChatProvider = ({ children }) => {
       });
 
       await chatApi.markChatUnread(waId);
-      console.log(`✓ Successfully marked chat as unread for wa_id: ${waId}`);
     } catch (error) {
       console.error(`Failed to mark chat as unread for wa_id ${waId}:`, error);
 
@@ -452,7 +417,6 @@ export const ChatProvider = ({ children }) => {
       });
 
       await chatApi.pinChat(waId);
-      console.log(`Pinned chat for wa_id: ${waId}`);
     } catch (error) {
       console.error(`Failed to pin chat for wa_id ${waId}:`, error);
 
@@ -477,7 +441,6 @@ export const ChatProvider = ({ children }) => {
       });
 
       await chatApi.unpinChat(waId);
-      console.log(`Unpinned chat for wa_id: ${waId}`);
     } catch (error) {
       console.error(`Failed to unpin chat for wa_id ${waId}:`, error);
 
@@ -495,7 +458,6 @@ export const ChatProvider = ({ children }) => {
     try {
       await chatApi.deleteChat(waId);
       dispatch({ type: ActionTypes.DELETE_CHAT, payload: waId });
-      console.log(`Deleted chat for wa_id: ${waId}`);
     } catch (error) {
       console.error(`Failed to delete chat for wa_id ${waId}:`, error);
     }
@@ -505,8 +467,6 @@ export const ChatProvider = ({ children }) => {
     if (!isConnected) return;
 
     const handleNewMessage = (message) => {
-      console.log('WebSocket: New message received:', message);
-
       const isDuplicate = state.messages[message.waId]?.some(
         (m) =>
           m.messageId === message.messageId ||
@@ -524,7 +484,6 @@ export const ChatProvider = ({ children }) => {
     };
 
     const handleMessageStatusUpdate = ({ messageId, status }) => {
-      console.log('WebSocket: Message status updated:', messageId, status);
       dispatch({
         type: ActionTypes.UPDATE_MESSAGE_STATUS,
         payload: { messageId, status },
@@ -532,7 +491,6 @@ export const ChatProvider = ({ children }) => {
     };
 
     const handleChatUpdated = ({ waId, message }) => {
-      console.log('WebSocket: Chat updated:', waId);
       dispatch({
         type: ActionTypes.UPDATE_CHAT,
         payload: {
@@ -548,7 +506,6 @@ export const ChatProvider = ({ children }) => {
     };
 
     const handleChatRead = ({ waId }) => {
-      console.log('WebSocket: Chat marked as read:', waId);
       dispatch({
         type: ActionTypes.UPDATE_CHAT_STATUS,
         payload: {
@@ -562,7 +519,6 @@ export const ChatProvider = ({ children }) => {
     };
 
     const handleChatUnread = ({ waId }) => {
-      console.log('WebSocket: Chat marked as unread:', waId);
       dispatch({
         type: ActionTypes.UPDATE_CHAT_STATUS,
         payload: {

@@ -46,8 +46,8 @@ function ChatUI() {
 
   const toggleList = (e) => {
     if (e) {
-      e.preventDefault(); 
-      e.stopPropagation(); 
+      e.preventDefault();
+      e.stopPropagation();
     }
     setIsListOpen((prev) => !prev);
   };
@@ -133,10 +133,7 @@ function ChatUI() {
         messageType: 'text',
       };
 
-      console.log('Sending message:', optimisticMessage);
-
       const response = await chatApi.sendMessage(activeChat.waId, messageText);
-      console.log('Message sent successfully:', response);
     } catch (error) {
       console.error('Failed to send message:', error);
 

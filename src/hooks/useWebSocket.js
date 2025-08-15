@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { io } from 'socket.io-client';
 
-const WEBSOCKET_URL =
-  import.meta.env.VITE_API_URL;
+const WEBSOCKET_URL = import.meta.env.VITE_API_URL;
 
 export const useWebSocket = () => {
   const [isConnected, setIsConnected] = useState(false);
@@ -19,13 +18,11 @@ export const useWebSocket = () => {
     const socket = socketRef.current;
 
     socket.on('connect', () => {
-      console.log('WebSocket connected');
       setIsConnected(true);
       setConnectionError(null);
     });
 
     socket.on('disconnect', (reason) => {
-      console.log('WebSocket disconnected:', reason);
       setIsConnected(false);
     });
 
@@ -46,7 +43,6 @@ export const useWebSocket = () => {
     (waId) => {
       if (socketRef.current && isConnected) {
         socketRef.current.emit('join_chat', waId);
-        console.log(`Joined chat room: ${waId}`);
       }
     },
     [isConnected]

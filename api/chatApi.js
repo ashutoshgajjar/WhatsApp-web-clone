@@ -5,8 +5,6 @@ const BUSINESS_PHONE_ID = import.meta.env.VITE_BUSINESS_PHONE_ID;
 export const chatApi = {
   sendMessage: async (waId, messageContent, messageType = 'text') => {
     try {
-      console.log(`Sending message to wa_id: ${waId}`);
-
       const messageData = {
         waId: waId,
         content: {
@@ -49,8 +47,6 @@ export const chatApi = {
         params.search = searchTerm;
       }
 
-      console.log('Fetching chats with params:', params);
-
       const response = await apiClient.get('/api/chats', { params });
 
       if (response.data.chats) {
@@ -78,8 +74,6 @@ export const chatApi = {
 
   getMessages: async (waId, page = 1, limit = 50) => {
     try {
-      console.log(`Fetching messages for wa_id: ${waId}`);
-
       const response = await apiClient.get(`/api/chats/${waId}/messages`, {
         params: { page, limit },
       });
@@ -92,15 +86,12 @@ export const chatApi = {
 
   getChatByWaId: async (waId, businessPhoneId = BUSINESS_PHONE_ID) => {
     try {
-      console.log(`Fetching chat details for wa_id: ${waId}`);
-
       const response = await apiClient.get(`/api/chats/${waId}`, {
         params: businessPhoneId ? { businessPhoneId } : {},
       });
       return response.data;
     } catch (error) {
       if (error.response?.status === 404) {
-        console.log(`Chat not found for wa_id: ${waId}`);
         return null;
       }
       console.error(`Error fetching chat for wa_id ${waId}:`, error);
@@ -118,7 +109,6 @@ export const chatApi = {
 
   markChatRead: async (waId) => {
     try {
-      console.log(`Marking chat as read for wa_id: ${waId}`);
       const response = await apiClient.put(`/api/chats/${waId}/read`);
       return response.data;
     } catch (error) {
@@ -129,7 +119,6 @@ export const chatApi = {
 
   markChatUnread: async (waId) => {
     try {
-      console.log(`Marking chat as unread for wa_id: ${waId}`);
       const response = await apiClient.put(`/api/chats/${waId}/unread`);
       return response.data;
     } catch (error) {
@@ -140,7 +129,6 @@ export const chatApi = {
 
   pinChat: async (waId) => {
     try {
-      console.log(`Pinning chat for wa_id: ${waId}`);
       const response = await apiClient.put(`/api/chats/${waId}/pin`);
       return response.data;
     } catch (error) {
@@ -151,7 +139,6 @@ export const chatApi = {
 
   unpinChat: async (waId) => {
     try {
-      console.log(`Unpinning chat for wa_id: ${waId}`);
       const response = await apiClient.put(`/api/chats/${waId}/unpin`);
       return response.data;
     } catch (error) {
@@ -162,7 +149,6 @@ export const chatApi = {
 
   deleteChat: async (waId) => {
     try {
-      console.log(`Deleting chat for wa_id: ${waId}`);
       const response = await apiClient.delete(`/api/chats/${waId}`);
       return response.data;
     } catch (error) {
@@ -173,7 +159,6 @@ export const chatApi = {
 
   restoreChat: async (waId) => {
     try {
-      console.log(`Restoring chat for wa_id: ${waId}`);
       const response = await apiClient.put(`/api/chats/${waId}/restore`);
       return response.data;
     } catch (error) {

@@ -51,15 +51,15 @@ const Switch = ({ checked, onChange, disabled = false }) => {
       onClick={() => !disabled && onChange(!checked)}
       disabled={disabled}
       className={`
-        group relative inline-flex h-5.5 w-9 items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none
-        ${checked ? 'bg-green-500' : 'bg-neutral-200'}
+        group relative inline-flex py-0.5 w-9 items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none
+        ${checked ? 'bg-green-500' : 'bg-neutral-200 border border-black/50'}
         ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
       `}
     >
       <span
         className={`
-          inline-block h-4 w-4 transform rounded-full group-hover:scale-115 bg-white shadow-lg transition-transform duration-200 ease-in-out
-          ${checked ? 'translate-x-4.5' : 'translate-x-0.5'}
+          inline-block h-4 w-4 transform rounded-full -translate-y-[0.025px] group-hover:scale-x-115  shadow-lg transition-transform duration-100 ease-in-out
+          ${checked ? 'translate-x-4.5 bg-white origin-right' : 'translate-x-0.5 bg-black/50 origin-left'}
         `}
       />
     </button>

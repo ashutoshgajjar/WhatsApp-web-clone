@@ -230,7 +230,7 @@ function List() {
           <div className='inline-flex gap-2'>
             <button
               onClick={handleRefresh}
-              className='inline-flex p-2 rounded-full hover:bg-stone-100 dark:hover:bg-zinc-700'
+              className='inline-flex p-2 transition-colors duration-150 rounded-full hover:bg-stone-100 dark:hover:bg-zinc-800'
               title='Refresh chats'
               disabled={loading}
             >
@@ -240,10 +240,10 @@ function List() {
               <button
                 ref={listButtonRef}
                 onClick={toggleList}
-                className={`inline-flex p-2 rounded-full ${
+                className={`inline-flex p-2 transition-colors duration-150 rounded-full ${
                   isListOpen
                     ? 'bg-stone-100 dark:bg-zinc-700'
-                    : 'hover:bg-stone-100 dark:hover:bg-zinc-700'
+                    : 'hover:bg-stone-100 dark:hover:bg-zinc-800'
                 }`}
                 title='List Options'
               >
@@ -366,9 +366,8 @@ function List() {
                       ? 'bg-zinc-200 dark:bg-zinc-800'
                       : activeChat?.waId === chat.waId
                       ? 'bg-emerald-100 dark:bg-emerald-900/30'
-                      : 'hover:bg-stone-100 dark:hover:bg-zinc-700 cursor-pointer'
+                      : 'hover:bg-stone-100 dark:hover:bg-zinc-800/75 cursor-pointer'
                   }`}
-                  title='User'
                 >
                   <div className='relative' title='Users Avatar'>
                     <div className='w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-semibold text-xs'>
@@ -384,7 +383,7 @@ function List() {
                   <div className='min-w-0 flex flex-col px-1'>
                     <div className='flex justify-between items-center gap-2'>
                       <p
-                        className={`dark:text-zinc-300 text-zinc-700 font-semibold truncate ${
+                        className={`dark:text-zinc-300 text-zinc-600 font-semibold truncate ${
                           !chat.isRead ? 'font-bold' : ''
                         }`}
                       >
@@ -396,7 +395,7 @@ function List() {
                     </div>
                     <div className='min-h-[20px] flex items-center gap-1.5 p-0.5 transition-all duration-250'>
                       <p
-                        className={`flex-1 text-sm text-zinc-600 dark:text-zinc-400 truncate ${
+                        className={`flex-1 text-sm text-zinc-500 dark:text-zinc-400 truncate ${
                           !chat.isRead ? 'font-semibold' : ''
                         } ${
                           chatMenuOpen === chat.waId
@@ -426,7 +425,7 @@ function List() {
                         <button
                           ref={chatMenuButtonRef}
                           onClick={(e) => handleChatMenuOpen(e, chat.waId)}
-                          className={`md:invisible md:group-hover:visible  p-1 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-600 transition-all duration-150 ${
+                          className={`md:invisible md:group-hover:visible  p-1 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-150 ${
                             chatMenuOpen === chat.waId
                               ? 'opacity-100 md:translate-x-2 md:visible bg-zinc-200 dark:bg-zinc-600'
                               : 'group-hover:translate-x-2 md:translate-x-6'

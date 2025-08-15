@@ -55,7 +55,7 @@ function Channel() {
 
   return (
     <>
-      <section className='sm:w-80 md:w-88 lg:w-100 flex-1 py-2 bg-white dark:bg-zinc-900 dark:text-white border-x border-black/10 dark:border-white/10'>
+      <section className='sm:w-80 md:w-88 lg:w-100 flex-1 pt-2 bg-white dark:bg-zinc-900 dark:text-white border-x border-black/10 dark:border-white/10'>
         <header className='flex items-center justify-between p-1 px-3'>
           <h1 className='text-xl font-semibold'>Channels</h1>
           <div className='inline-flex gap-2'>
@@ -78,17 +78,17 @@ function Channel() {
           </div>
         </div>
         {/* <div id='tab' className='flex gap-2 p-1.5'>
-          <button className='text-sm px-2.5 py-1 rounded-full text-black/50 dark:text-zinc-300 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700 border border-black/10 hover:border-black/15 dark:border-zinc-700 dark:hover:border-zinc-600'>
+          <button className='text-sm px-2.5 py-1 rounded-full text-black/50 text-zinc-600 dark:text-zinc-300 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700 border border-black/10 hover:border-black/15 dark:border-zinc-700 dark:hover:border-zinc-600'>
             All
           </button>
-          <button className='text-sm px-2.5 py-1 rounded-full text-black/50 dark:text-zinc-300 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700 border border-black/10 hover:border-black/15 dark:border-zinc-700 dark:hover:border-zinc-600'>
+          <button className='text-sm px-2.5 py-1 rounded-full text-black/50 text-zinc-600 dark:text-zinc-300 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700 border border-black/10 hover:border-black/15 dark:border-zinc-700 dark:hover:border-zinc-600'>
             Unread
           </button>
-          <button className='text-sm px-2.5 py-1 rounded-full text-black/50 dark:text-zinc-300 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700 border border-black/10 hover:border-black/15 dark:border-zinc-700 dark:hover:border-zinc-600'>
+          <button className='text-sm px-2.5 py-1 rounded-full text-black/50 text-zinc-600 dark:text-zinc-300 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700 border border-black/10 hover:border-black/15 dark:border-zinc-700 dark:hover:border-zinc-600'>
             Groups
           </button>
         </div> */}
-        <div className='space-y-2 px-3 h-[calc(100vh-6.94rem)] overflow-y-auto'>
+        <div className='space-y-2 px-3 py-2 h-[calc(100vh-6.44rem)] overflow-y-auto'>
           {mockChannels1.map((channel, idx) => (
             <div
               key={idx}
@@ -107,8 +107,8 @@ function Channel() {
                   {channel.followers}M followers
                 </p>
               </div>
-              <div className='absolute bottom-2 right-2 opacity-0 dark:text-zinc-300 group-hover:opacity-100 transition-opacity translate-x-2 group-hover:translate-x-0 duration-250 '>
-                <ChevronDown />
+              <div className='absolute bottom-2 right-2 opacity-0 text-zinc-600 dark:text-zinc-300 group-hover:opacity-100 transition-translate translate-x-2 group-hover:translate-x-0 duration-150 '>
+                <ChevronDown className='size-5'/>
               </div>
             </div>
           ))}
@@ -134,7 +134,7 @@ function Channel() {
                     {channel.followers}K followers
                   </p>
                 </div>
-                <div className='absolute bottom-2 right-2 opacity-0 dark:text-zinc-300 group-hover:opacity-100 transition-opacity translate-x-2 group-hover:translate-x-0 duration-250 '>
+                <div className='absolute bottom-2 right-2 opacity-0 text-zinc-600 dark:text-zinc-300 group-hover:opacity-100 transition-translate translate-x-2 group-hover:translate-x-0 duration-250 '>
                   <ChevronDown />
                 </div>
               </div>

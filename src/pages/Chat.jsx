@@ -66,7 +66,7 @@ function Chat() {
             title: 'Status Updates',
             subtitle: 'Share and view status updates from your contacts',
             icon: (
-              <svg className='size-15' viewBox='0 0 24 24' fill='none'>
+              <svg className='size-10 sm:size-15' viewBox='0 0 24 24' fill='none'>
                 <path
                   d='M13.5628 3.1366C13.6587 2.5927 14.1794 2.22462 14.711 2.37435C15.7905 2.67838 16.8135 3.16253 17.736 3.80854C18.9323 4.64621 19.9305 5.73571 20.6606 7.00047C21.3907 8.26523 21.8349 9.67454 21.962 11.1294C22.0601 12.2513 21.9677 13.3793 21.6911 14.4662C21.5549 15.0014 20.9758 15.2682 20.4568 15.0792C19.9378 14.8903 19.677 14.317 19.7998 13.7785C19.9843 12.9693 20.0422 12.1343 19.9696 11.3035C19.8679 10.1396 19.5126 9.01215 18.9285 8.00035C18.3444 6.98854 17.5458 6.11694 16.5888 5.44681C15.9057 4.96841 15.1536 4.60097 14.3606 4.35607C13.8329 4.19311 13.4669 3.68049 13.5628 3.1366Z'
                   fill='currentColor'
@@ -97,7 +97,7 @@ function Chat() {
                 xmlns='http://www.w3.org/2000/svg'
                 viewBox='0 0 24 24'
                 fill='currentColor'
-                className='size-15'
+                className='size-10 sm:size-15'
               >
                 <path d='M16.881 4.345A23.112 23.112 0 0 1 8.25 6H7.5a5.25 5.25 0 0 0-.88 10.427 21.593 21.593 0 0 0 1.378 3.94c.464 1.004 1.674 1.32 2.582.796l.657-.379c.88-.508 1.165-1.593.772-2.468a17.116 17.116 0 0 1-.628-1.607c1.918.258 3.76.75 5.5 1.446A21.727 21.727 0 0 0 18 11.25c0-2.414-.393-4.735-1.119-6.905ZM18.26 3.74a23.22 23.22 0 0 1 1.24 7.51 23.22 23.22 0 0 1-1.41 7.992.75.75 0 1 0 1.409.516 24.555 24.555 0 0 0 1.415-6.43 2.992 2.992 0 0 0 .836-2.078c0-.807-.319-1.54-.836-2.078a24.65 24.65 0 0 0-1.415-6.43.75.75 0 1 0-1.409.516c.059.16.116.321.17.483Z' />
               </svg>
@@ -112,7 +112,7 @@ function Chat() {
                 xmlns='http://www.w3.org/2000/svg'
                 viewBox='0 0 24 24'
                 fill='currentColor'
-                className='size-15'
+                className='size-10 sm:size-15'
               >
                 <path
                   fillRule='evenodd'
@@ -132,7 +132,7 @@ function Chat() {
                 xmlns='http://www.w3.org/2000/svg'
                 viewBox='0 0 24 24'
                 fill='currentColor'
-                className='size-15'
+                className='size-10 sm:size-15'
               >
                 <path
                   fillRule='evenodd'
@@ -151,7 +151,7 @@ function Chat() {
                 xmlns='http://www.w3.org/2000/svg'
                 viewBox='0 0 24 24'
                 fill='currentColor'
-                className='size-15'
+                className='size-10 sm:size-15'
               >
                 <path
                   fillRule='evenodd'
@@ -166,7 +166,7 @@ function Chat() {
             title: 'Welcome',
             subtitle: 'Select an option from the sidebar to get started',
             icon: (
-              <svg className='size-15' fill='currentColor' viewBox='0 0 24 24'>
+              <svg className='size-10 sm:size-15' fill='currentColor' viewBox='0 0 24 24'>
                 <path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z' />
               </svg>
             ),
@@ -177,13 +177,13 @@ function Chat() {
     const { title, subtitle, icon } = getViewContent();
 
     return (
-      <div className='flex flex-col items-center justify-center h-full p-8 text-center bg-amber-50/25 dark:bg-zinc-900 gap-6'>
-        <div className='size-18 bg-black/5 dark:bg-white/10 rounded-full flex items-center justify-center text-black/25 dark:text-white/50'>
+      <div className='flex flex-col items-center justify-center h-full p-8 text-center bg-amber-50/25 dark:bg-zinc-900 gap-4'>
+        <div className=' rounded-full flex items-center justify-center text-black/25 dark:text-white/50'>
           {icon}
         </div>
-        <div className='flex flex-col gap-2'>
-          <h2 className='text-3xl text-gray-900 dark:text-white'>{title}</h2>
-          <p className='text-md text-gray-600 dark:text-gray-300 max-w-md'>
+        <div className='flex flex-col gap-1'>
+          <h2 className='text-xl md:text-3xl text-gray-900 dark:text-gray-200'>{title}</h2>
+          <p className='text-xs md:text-md text-gray-600 dark:text-gray-300 max-w-md'>
             {subtitle}
           </p>
         </div>
@@ -192,7 +192,7 @@ function Chat() {
   };
 
   return (
-    <div className='flex h-screen'>
+    <div className='flex h-full'>
       <Tab
         activeView={activeView}
         setActiveView={setActiveView}

@@ -234,7 +234,7 @@ function List() {
               title='Refresh chats'
               disabled={loading}
             >
-              <MessageSquarePlus className='size-5' />
+              <MessageSquarePlus className='size-4 sm:size-5' />
             </button>
             <div className='relative'>
               <button
@@ -247,46 +247,46 @@ function List() {
                 }`}
                 title='List Options'
               >
-                <EllipsisVertical />
+                <EllipsisVertical className='size-4 sm:size-5'/>
               </button>
               <Popover
                 isOpen={isListOpen}
                 onClose={closeList}
                 anchorRef={listButtonRef}
-                className='dark:bg-zinc-900 shadow-lg rounded-lg p-2 w-64'
+                className='dark:bg-zinc-900 shadow-lg rounded-lg p-2 w-40 sm:w-64'
               >
                 <div className='space-y-1 text-neutral-700 dark:text-neutral-300'>
                   <button className='flex items-center gap-3 w-full rounded-md px-3 py-2 text-left transition-all duration-50 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-zinc-100 dark:hover:bg-zinc-700'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       viewBox='0 0 24 24'
-                      className='size-5'
+                      className='size-4 sm:size-5'
                     >
                       <path
                         fill='currentColor'
                         d='M13 11a3 3 0 1 0-3-3a3 3 0 0 0 3 3m0-4a1 1 0 1 1-1 1a1 1 0 0 1 1-1m4.11 3.86a5 5 0 0 0 0-5.72A2.9 2.9 0 0 1 18 5a3 3 0 0 1 0 6a2.9 2.9 0 0 1-.89-.14M13 13c-6 0-6 4-6 4v2h12v-2s0-4-6-4m-4 4c0-.29.32-2 4-2c3.5 0 3.94 1.56 4 2m7 0v2h-3v-2a5.6 5.6 0 0 0-1.8-3.94C24 13.55 24 17 24 17M8 12H5v3H3v-3H0v-2h3V7h2v3h3Z'
                       />
                     </svg>
-                    <span className='text-sm font-medium'>New Group</span>
+                    <span className='text-xs sm:text-sm font-medium'>New Group</span>
                   </button>
 
                   <button className='flex items-center gap-3 w-full rounded-md px-3 py-2 text-left transition-all duration-50 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-zinc-100 dark:hover:bg-zinc-700'>
-                    <Star className='size-5' />
-                    <span className='text-sm font-medium'>
+                    <Star className='size-4 sm:size-5' />
+                    <span className='text-xs sm:text-sm font-medium'>
                       Starred Messages
                     </span>
                   </button>
 
                   <button className='flex items-center gap-3 w-full rounded-md px-3 py-2 text-left transition-all duration-50 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-zinc-100 dark:hover:bg-zinc-700'>
-                    <SquareCheck className='size-5' />
-                    <span className='text-sm font-medium'>Select Chats</span>
+                    <SquareCheck className='size-4 sm:size-5' />
+                    <span className='text-xs sm:text-sm font-medium'>Select Chats</span>
                   </button>
 
                   <div className='border-t border-neutral-200 dark:border-neutral-600 my-1.5'></div>
 
                   <button className='flex items-center gap-3 w-full rounded-md p-3 text-left transition-all duration-50 text-red-700 dark:text-red-500 hover:bg-red-100 dark:hover:bg-red-900/25'>
                     <LogOut className='size-4' />
-                    <span className='text-sm font-medium'>Log Out</span>
+                    <span className='text-xs sm:text-sm font-medium'>Log Out</span>
                   </button>
                 </div>
               </Popover>
@@ -370,32 +370,32 @@ function List() {
                   }`}
                 >
                   <div className='relative' title='Users Avatar'>
-                    <div className='w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-semibold text-xs'>
+                    <div className='size-9 sm:size-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-semibold text-xs'>
                       {getAvatarLetter(chat)}
                     </div>
                     {chat.isPinned && (
-                      <span className='absolute -top-2 -left-2 p-1 bg-white dark:bg-zinc-800 shadow rounded-full'>
-                        <Pin className='size-3.5 -rotate-45' />
+                      <span className='absolute -top-1.5 sm:-top-2 -left-1.5 sm:-left-2 p-1 bg-white dark:bg-zinc-800 shadow rounded-full'>
+                        <Pin className='size-3 sm:size-3.5 -rotate-45' />
                       </span>
                     )}
                   </div>
 
-                  <div className='min-w-0 flex flex-col px-1'>
+                  <div className='min-w-0 flex flex-col sm:px-1'>
                     <div className='flex justify-between items-center gap-2'>
                       <p
-                        className={`dark:text-zinc-300 text-zinc-600 font-semibold truncate ${
+                        className={`text-sm sm:text-base dark:text-zinc-300 text-zinc-600 font-semibold truncate ${
                           !chat.isRead ? 'font-bold' : ''
                         }`}
                       >
                         {displayInfo.primaryName}
                       </p>
-                      <span className='text-xs text-zinc-500 dark:text-zinc-400 flex-shrink-0'>
+                      <span className='text-[0.7em] sm:text-xs text-zinc-500 dark:text-zinc-400 flex-shrink-0'>
                         {formatTimestamp(chat.lastMessage?.timestamp)}
                       </span>
                     </div>
                     <div className='min-h-[20px] flex items-center gap-1.5 p-0.5 transition-all duration-250'>
                       <p
-                        className={`flex-1 text-sm text-zinc-500 dark:text-zinc-400 truncate ${
+                        className={`flex-1 text-xs md:text-sm text-zinc-500 dark:text-zinc-400 truncate ${
                           !chat.isRead ? 'font-semibold' : ''
                         } ${
                           chatMenuOpen === chat.waId

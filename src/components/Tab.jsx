@@ -25,7 +25,7 @@ function Tab({
 
   return (
     <>
-      <aside className='bg-white dark:bg-[#1b1b1e] text-neutral-700 dark:text-neutral-200 z-60 flex flex-col justify-between px-2 py-3 relative border-x-2 md:border-none border-black/10 dark:border-white/10'>
+      <aside className='bg-white dark:bg-[#1b1b1e] h-screen text-neutral-700 dark:text-neutral-200 z-60 flex flex-col justify-between px-2 py-3 relative border-x-2 md:border-none border-black/10 dark:border-white/10'>
         <div className='flex flex-col items-center  gap-2'>
           <div className='flex flex-col items-center mb- gap-1'>
             <button

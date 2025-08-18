@@ -219,7 +219,7 @@ function List() {
 
   return (
     <>
-      <section className='w-64 sm:w-80 md:w-88 lg:w-100 flex-1 py-2 bg-white dark:bg-zinc-900 dark:text-white border-x border-black/10 dark:border-white/10'>
+      <section className='w-64 sm:w-80 md:w-88 lg:w-100 py-2 bg-white dark:bg-zinc-900 dark:text-white border-x border-black/10 dark:border-white/10'>
         <header className='flex items-center justify-between p-1 px-3'>
           <h1
             className='text-emerald-600/80 dark:text-white text-xl font-sans font-bold'

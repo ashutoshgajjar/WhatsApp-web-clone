@@ -1,12 +1,58 @@
-# React + Vite
+# WhatsApp Web Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A WhatsApp Web clone built with React with modern tooling and real-time capabilities.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React** 19.1.1
+- **Vite** 7.1.0 - Build tool and dev server
+- **TailwindCSS** 4.1.11 - Utility-first CSS framework
+- **Axios** - HTTP client
+- **Socket.io Client** - Real-time communication
+- **Lucide React \& React Icons** - Icon libraries
+- **ESLint** - Code linting
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Installation
+
+```bash
+npm install
+```
+
+
+## Development
+
+```bash
+npm run dev
+```
+
+
+## Build
+
+```bash
+npm run build
+npm run preview  # Preview build locally
+npm run serve    # Build and serve
+```
+
+
+## Code Quality
+
+```bash
+npm run lint
+```
+
+
+## Available Scripts
+
+- `dev` - Start development server
+- `build` - Create production build
+- `preview` - Preview production build
+- `serve` - Build and serve application
+- `lint` - Run ESLint
+
+
+## Requirements
+
+- Node.js 18+
+- npm
